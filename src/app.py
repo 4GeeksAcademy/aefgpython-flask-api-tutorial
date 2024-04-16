@@ -19,28 +19,17 @@ def add_new_todo():
     print("Incoming request with the following body:", request_body)
     return jsonify(todos)
 
-from flask import Flask, jsonify
 
-app = Flask(__name__)
 
-todos = ["Tarea 1", "Tarea 2", "Tarea 3", "Tarea 4"]
+
+
+
 
 @app.route('/todos/<int:position>', methods=['DELETE'])
 def delete_todo(position):
-    global todos  
-
-   
-    if position >= 0 and position < lenght(todos):
-        
-        del todos[position]
-       
-        return jsonify(todos)
-    else:
-       
-        return jsonify({"error": "Position out of range"}), 400
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    print("This is the position to delete:", position)
+    todos.pop(position)
+    return jsonify(todos)
 
 
 if __name__ == '__main__':
